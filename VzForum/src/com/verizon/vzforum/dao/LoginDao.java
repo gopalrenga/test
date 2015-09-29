@@ -1,6 +1,8 @@
 package com.verizon.vzforum.dao;
 
+import com.verizon.vzforum.model.Login;
+
 public interface LoginDao {
 
-	public boolean doLoginCheck();
+	public String doLoginCheck(Login login);
 }
