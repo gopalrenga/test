@@ -4,10 +4,11 @@
 <html>
 <head>
 <link href="${resources}/css/core.css" rel="stylesheet">
+<script type="text/javascript" src="./extjs/ext-base-debug.js"></script>
+<script type="text/javascript" src="./extjs/ext-all-debug.js"></script>
+<script type="text/javascript" src="app.js"></script>
 </head>
 <body>
-<h1>Ant + Spring MVC Web Project Example</h1>
- 
-<p>Message : ${message}</p>	
+	
 </body>
 </html>
