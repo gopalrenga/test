@@ -4,6 +4,7 @@
 
 <html>
 <head>
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">"
 <link href="${resources}/css/core.css" rel="stylesheet">
 <link href="resources/extjs/extjs.css" rel="stylesheet">
 <script type="text/javascript" src="resources/extjs/ext-all-debug.js"></script>
