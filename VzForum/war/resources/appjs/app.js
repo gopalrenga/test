@@ -17,7 +17,7 @@ Ext.onReady(function() {
 		}, {
 			name : 'loginPassword',
 			xtype : 'textfield',
-			inputType: 'password',
+			inputType : 'password',
 			allowBlank : false,
 			autoHeight : true
 		}, {
@@ -26,7 +26,21 @@ Ext.onReady(function() {
 			text : 'Log In',
 			formBind : true,
 			handler : function() {
-				
+				Ext.Ajax.request({
+					url : 'login',
+					method : 'POST',
+					jsonData : {
+						userName : 'admin',
+						password : 'admin'
+					},
+					success : function(response) {
+						console.log(response);
+					},
+					failure : function(response) {
+						console.log(response);
+					}
+
+				});
 			}
 		} ],
 	});
@@ -36,9 +50,3 @@ Ext.onReady(function() {
 	});
 
 });
-
-
-
-
-
-

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<head>
 <link rel="stylesheet" type="text/css"
 	href="resources/extjs/ext-theme-neptune/build/resources/ext-theme-neptune-all.css">
 
