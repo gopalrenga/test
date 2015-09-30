@@ -16,13 +16,20 @@ import com.verizon.vzforum.model.Login;
 import com.verizon.vzforum.service.LoginService;
 
 @Controller
-@RequestMapping("/vzw")
 public class WelcomeController {
  
 	@Autowired
 	LoginService loginService;
 	
 	private final static Logger logger = LoggerFactory.getLogger(WelcomeController.class);
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index() {
+		
+		return "index";
+ 
+	}
+	
  
 	@RequestMapping(value = "/login", method = RequestMethod.POST,produces="application/json")
 	public @ResponseBody  String welcome(@RequestBody Login login) {
