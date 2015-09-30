@@ -7,3 +7,7 @@ p {
 	border: 5px solid red;
 	padding:10px;
 }
+
+.home-icon{
+	background-image:url('../../icons/home.png') !important;
+}
