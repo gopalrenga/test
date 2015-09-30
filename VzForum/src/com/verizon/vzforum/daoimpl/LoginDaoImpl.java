@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.verizon.vzforum.dao.LoginDao;
 import com.verizon.vzforum.model.Login;
+import com.verizon.vzforum.model.Queries;
 
 @Repository
 public class LoginDaoImpl implements LoginDao {
@@ -45,7 +46,6 @@ private DataSource dataSource;
 		  rs =	ps.executeQuery();
 		  
 		  while(rs.next()){
-			  System.out.println("innnn"+rs.getString(1));
 			  status = rs.getString(1).equals("1")?"success":"failure"; 
 		  }
 			
@@ -71,6 +71,50 @@ private DataSource dataSource;
 			} catch (SQLException e) {}
 			
 		}
+
+		return status;
+	}
+
+
+	@Override
+	public String saveQueries(Queries queries) throws Exception {
+		String status= "failure";
+		
+		String sql = "insert into forumqueries( question, technologyid,createdby,createdon)values " +
+				"(?,?,?,?)";
+		Connection conn = null;
+		PreparedStatement ps=null;
+		
+		try {
+			conn = dataSource.getConnection();
+
+			 ps = conn.prepareStatement(sql);
+			ps.setString(1, queries.getQuestion());
+			ps.setInt(2,Integer.parseInt(queries.getTechnologyId()));
+			ps.setString(3,queries.getCreatedBy());
+			ps.setString(4,queries.getCreatedOn());
+			
+		 int flag  = ps.executeUpdate();
+		  
+		 status= (flag==0)?"failure":"success";
+			
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+			
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}if(ps!=null){
+				try {
+					ps.close();
+				} catch (SQLException e) {}
+				
+			}
+		}
+		
 
 		return status;
 	}

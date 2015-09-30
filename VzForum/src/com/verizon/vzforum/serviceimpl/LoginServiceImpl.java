@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 import com.verizon.vzforum.dao.LoginDao;
 import com.verizon.vzforum.model.Login;
+import com.verizon.vzforum.model.Queries;
 import com.verizon.vzforum.service.LoginService;
 import com.verizon.vzforum.vo.BaseMessage;
 import com.verizon.vzforum.vo.LoginVO;
@@ -38,6 +39,42 @@ public class LoginServiceImpl implements LoginService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+		return jsonObject;
+	}
+
+	@Override
+	public JSONObject saveQueries(Queries queries) {
+		Gson gson = new Gson();
+		LoginVO loginvo = new LoginVO();
+		BaseMessage baseMessage = new BaseMessage();
+		String status= "failure";
+		JSONObject jsonObject = null;
+		try {
+			
+			
+			
+			
+			 status = loginDao.saveQueries(queries);
+			baseMessage.setSuccessCode("00");
+			baseMessage.setSuccessMsg("Success");
+			loginvo.setLoginStatus(status);
+			loginvo.setMessages(baseMessage);
+			gson.toJson(loginvo);
+			
+			
+			try {
+				jsonObject = new JSONObject(gson.toJson(loginvo));
+			} catch (JSONException e) {
+				baseMessage.setSuccessCode("00");
+				baseMessage.setSuccessMsg("Success");
+				loginvo.setLoginStatus(status);
+				loginvo.setMessages(baseMessage);
+				jsonObject = new JSONObject(gson.toJson(loginvo));
+			}	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return jsonObject;
 	}
 

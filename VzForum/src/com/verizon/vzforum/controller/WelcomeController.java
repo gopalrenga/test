@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.verizon.vzforum.model.Login;
+import com.verizon.vzforum.model.Queries;
 import com.verizon.vzforum.service.LoginService;
 
 @Controller
@@ -39,12 +40,14 @@ public class WelcomeController {
  
 	}
 	
-	@RequestMapping(value = "/dologin", method = RequestMethod.GET,produces="application/json")
-	public @ResponseBody  String test() {
+	@RequestMapping(value = "/createtopic", method = RequestMethod.POST,produces="application/json")
+	public @ResponseBody  String saveQueries(@RequestBody Queries query) {
+		JSONObject responseObj=loginService.saveQueries(query);
  
-		return "{ 'status':'sucess'}";
+		return responseObj.toString();
  
 	}
+	
 	
 	
  
